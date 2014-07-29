@@ -23,3 +23,13 @@ REQUEST_URI=/drinkkingClub/
 in /Users/saurabh/projects/drinkkingClub/protected/views/layouts/main.php (51)
 in /Users/saurabh/projects/drinkkingClub/protected/views/layouts/column1.php (6)
 in /Users/saurabh/projects/drinkkingClub/protected/controllers/SiteController.php (32)
+2014/07/29 17:38:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "sgii".' in /Users/saurabh/projects/drinkkingClub/yii-1.1.13/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/saurabh/projects/drinkkingClub/yii-1.1.13/framework/web/CWebApplication.php(141): CWebApplication->runController('sgii')
+#1 /Users/saurabh/projects/drinkkingClub/yii-1.1.13/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Users/saurabh/projects/drinkkingClub/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/drinkkingClub/index.php?r=sgii
+---
+2014/07/29 17:42:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'drinkking_club.user' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `user`.
+in /Users/saurabh/projects/drinkkingClub/index.php (13)

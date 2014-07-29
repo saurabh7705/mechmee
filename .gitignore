@@ -1,2 +1,12 @@
 .DS_Store
-protected/.DS_Store
+*/.DS_Store
+**/***/.DS_Store
+*/**/**/.DS_Store
+*/**/**/*/.DS_Store
+*.*~
+*.log
+/assets
+protected/runtime/application.log
+protected/runtime/application.log.*
+protected/runtime/cache
+protected/runtime/cache/*

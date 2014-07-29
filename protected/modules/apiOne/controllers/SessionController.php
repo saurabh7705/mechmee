@@ -55,7 +55,7 @@ class SessionController extends CController {
 				$user->scenario = 'facebook';
 				$user->attributes = $_POST['User'];
 				$user->password = "";
-				if($user->updateProfileFromFacebookAndSave($facebook_data['user_profile'], true, false)) {
+				if($user->updateProfileFromFacebookAndSave($facebook_data['user_profile'])) {
 					$user->saveFacebookAuthentication($facebook_data['user_profile']);
 					$this->loginAndRenderOrReturnData($user, true);
 				}

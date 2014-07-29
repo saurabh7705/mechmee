@@ -10,7 +10,7 @@ class m140725_052205_authentication_table extends CDbMigration
 				'user_id' => 'int(11) NOT NULL',
 				'provider' => 'varchar(255)',
 				'uid' => 'varchar(255)',
-				'email'=>'varchar(255)'
+				'email'=>'varchar(255)',
 				'created_at' => 'int(11)',
 				'updated_at' => 'int(11)',
 				'PRIMARY KEY (id)',
