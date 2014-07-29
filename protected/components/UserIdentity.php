@@ -7,6 +7,8 @@
  */
 class UserIdentity extends CUserIdentity
 {
+	private $_id;
+	public $user;
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
@@ -15,19 +17,53 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
-	public function authenticate()
+	public function getId()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
+		return $this->_id;
+	}
+
+	public function authenticate() {
+		$user = User::model()->find(array('condition'=>"email=:email", 'params'=>array('email'=>$this->username)));
+		if($user) {
+			if(md5($this->password) == $user->password) {
+				$this->_id = $user->id;
+				$this->username = $user->username;
+				$this->user = $user;
+				$this->errorCode = self::ERROR_NONE;
+			}
+			else 
+				$this->errorCode=self::ERROR_PASSWORD_INVALID;  
+		}
+		else {
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		}
+		return !$this->errorCode;
+	}
+
+	static public function auto_login($email,$password) {
+		$identity = new UserIdentity($email,$password);
+		$identity->auto_authenticate();
+		if($identity->errorCode === UserIdentity::ERROR_NONE) {
+			$duration = 3600*24*15;
+			Yii::app()->user->login($identity, $duration);
+			return true;
+		}
 		else
-			$this->errorCode=self::ERROR_NONE;
+			return false;
+	}
+
+	public function auto_authenticate()
+	{
+		$user=User::model()->find("email='$this->username'");
+		if($user===null) {
+			$this->errorCode=self::ERROR_USERNAME_INVALID;
+		}
+		else {
+            $this->_id = $user->id;
+			$this->user = $user;
+            $this->username = $user->username;
+            $this->errorCode = self::ERROR_NONE;
+		}
 		return !$this->errorCode;
 	}
 }

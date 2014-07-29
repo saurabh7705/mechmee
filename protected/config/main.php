@@ -16,6 +16,8 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.lib.*',
+        'application.lib.facebook.*',
 	),
 
 	'modules'=>array(
@@ -26,6 +28,7 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
+		'apiOne',
 	),
 
 	// application components
@@ -85,7 +88,9 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'saurabh7705@gmail.com',
+		'facebook_appID' => 'appID',
+        'facebook_appSecret' => 'appSecret',
 	),
 	'id' => '97280bb9a5ef52f6564ff41327d34ad0',
 );
