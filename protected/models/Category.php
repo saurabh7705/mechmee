@@ -13,8 +13,11 @@
 class Category extends CActiveRecord
 {
 	TYPE_ALCOHOLIC = 'ALCOHOLIC';
-	TYPE_NONALCOHOLIC = 'NONALCOHOLIC';
+	TYPE_NONALCOHOLIC = 'NON_ALCOHOLIC';
 	TYPE_SNACKS = 'SNACKS';
+
+	public static $types = array(self::TYPE_ALCOHOLIC=>'Alcoholic', self::TYPE_NONALCOHOLIC=>'Non Alcoholic', self::TYPE_SNACKS=>'Snacks');
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
