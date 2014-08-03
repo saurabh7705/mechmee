@@ -12,9 +12,9 @@
  */
 class Category extends CActiveRecord
 {
-	TYPE_ALCOHOLIC = 'ALCOHOLIC';
-	TYPE_NONALCOHOLIC = 'NON_ALCOHOLIC';
-	TYPE_SNACKS = 'SNACKS';
+	const TYPE_ALCOHOLIC = 'ALCOHOLIC';
+	const TYPE_NONALCOHOLIC = 'NON_ALCOHOLIC';
+	const TYPE_SNACKS = 'SNACKS';
 
 	public static $types = array(self::TYPE_ALCOHOLIC=>'Alcoholic', self::TYPE_NONALCOHOLIC=>'Non Alcoholic', self::TYPE_SNACKS=>'Snacks');
 	

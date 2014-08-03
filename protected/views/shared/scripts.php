@@ -1,7 +1,7 @@
 <?php 
 $baseurl=Yii::app()->baseUrl;
 $cs = Yii::app()->clientScript;
-$jquery_url = "http://localhost/hitwicket/js/jquery.min.js";
+$jquery_url = "http://localhost/drinkkingClub/js/jquery.min.js";
 $cs->scriptMap = array('jquery.min.js'=> $jquery_url, 'jquery.js'=>$jquery_url);
 $cs->registerCoreScript('jquery');
 Yii::app()->clientScript->addPackage('other-required-scripts', array(

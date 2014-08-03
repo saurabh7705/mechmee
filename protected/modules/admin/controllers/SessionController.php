@@ -1,6 +1,5 @@
 <?php
-
-class SessionController extends Controller
+class SessionController extends Controller 
 {
 	public function actionLogin()
 	{

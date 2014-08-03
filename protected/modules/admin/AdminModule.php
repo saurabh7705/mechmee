@@ -9,7 +9,7 @@ class AdminModule extends CWebModule
 
 	public function beforeControllerAction($controller, $action) {                                                                                                             
 		if(parent::beforeControllerAction($controller, $action)) {
-			if(!Yii::app()->user->isAdmin)
+			if(!Yii::app()->user->isAdmin && $controller->id != 'session')
 				throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 			return true;
 		}

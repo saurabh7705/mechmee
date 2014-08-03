@@ -3,7 +3,7 @@ class WebUser extends CWebUser{
 	private $_user;
 	
 	//is the user an administrator ?
-	/*function getIsAdmin(){
+	function getIsAdmin(){
 		return ( $this->user && $this->user->access_level >= User::LEVEL_ADMIN );
 	}
 	
@@ -19,6 +19,6 @@ class WebUser extends CWebUser{
 			$this->_user = User::model()->findByPk( $this->id );
 		}
 		return $this->_user;
-	}*/
+	}
 }
 ?>
