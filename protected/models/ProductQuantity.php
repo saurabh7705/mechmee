@@ -18,6 +18,7 @@ class ProductQuantity extends CActiveRecord
 {
 	const STATUS_ACTIVE = 1;
 	const STATUS_INACTIVE = 2;
+	public static $statuses = array(self::STATUS_ACTIVE=>'Active', self::STATUS_INACTIVE=>'Inactive');
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -93,8 +94,10 @@ class ProductQuantity extends CActiveRecord
 	}
 
 	public function beforeSave() {
-		if($this->isNewRecord)
+		if($this->isNewRecord) {
 			$this->created_at = time();
+			$this->status = self::STATUS_ACTIVE;
+		}
 		$this->updated_at = time();
 		return parent::beforeSave();
 	}

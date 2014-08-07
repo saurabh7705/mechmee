@@ -95,8 +95,10 @@ class Product extends CActiveRecord
 	}
 
 	public function beforeSave() {
-		if($this->isNewRecord)
+		if($this->isNewRecord) {
 			$this->created_at = time();
+			$this->status = self::STATUS_INACTIVE;
+		}
 		$this->updated_at = time();
 		return parent::beforeSave();
 	}
@@ -118,6 +120,10 @@ class Product extends CActiveRecord
 	public function markInactive() {
 		$this->status = self::STATUS_INACTIVE;
 		$this->save();
+	}
+
+	public function isActive() {
+		return ($this->status == self::STATUS_ACTIVE);
 	}
 
 	/**

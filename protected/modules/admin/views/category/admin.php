@@ -1,5 +1,4 @@
 <?php
-	$types = Category::$types;
 	$this->widget('zii.widgets.grid.CGridView', array(
 		'id'=>'category_grid',
 		'dataProvider'=>$model->search(),
@@ -10,7 +9,7 @@
 			'name',
 			array(
 				'name' => 'type',
-				'value' => '$types[$data->type]',
+				'value' => 'Category::$types[$data->type]',
 				'filter' => CHtml::dropDownList('Category[type]', $model->type, Category::$types, array('prompt' => 'All')),
 			),
 	        array(
