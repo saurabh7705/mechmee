@@ -16,8 +16,10 @@ class Controller extends CController {
 	public function filterAuthenticate($filterChain) {
 		if(isset($_GET['auth_token'])) {
 			$token = ApiToken::model()->active()->find("token=:token", array(":token"=>$_GET['auth_token']));
-			if($token)
-				$this->setUser($token->user_id);
+			if($token) {
+				if($token->user_id)
+					$this->setUser($token->user_id);
+			}
 			else
 				$this->renderData(array('status'=>'AUTH_ERROR', 'errors'=>array("Authentication Failed.")), false);
 		}
@@ -41,7 +43,7 @@ class Controller extends CController {
 	}
 	
 	public function renderData($data, $set_user_data=true) {
-		if($set_user_data)
+		if($set_user_data && $this->_user)
 			$data['current_user_data'] = LoadDataHelper::getCurrentUserData($this->_user);
 		echo CJSON::encode($data);
 		Yii::app()->end(); // required to stop after output 

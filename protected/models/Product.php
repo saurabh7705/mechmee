@@ -47,9 +47,10 @@ class Product extends CActiveRecord
 			array('name, category_id, sub_category_id', 'required'),
 			array('category_id, sub_category_id, in_stock, status, created_at, updated_at', 'numerical', 'integerOnly'=>true),
 			array('name, brand', 'length', 'max'=>255),
+			array('tags', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, category_id, sub_category_id, brand, in_stock, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, name, category_id, sub_category_id, brand, in_stock, status, tags, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -124,6 +125,11 @@ class Product extends CActiveRecord
 
 	public function isActive() {
 		return ($this->status == self::STATUS_ACTIVE);
+	}
+
+	public function updateTags() {
+		$this->tags = $this->name.' '.$this->sub_category->name.' '.$this->category->name;
+		$this->save();
 	}
 
 	/**

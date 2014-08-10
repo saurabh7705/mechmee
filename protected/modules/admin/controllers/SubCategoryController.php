@@ -9,8 +9,10 @@ class SubCategoryController extends Controller
 		$grid_model = new SubCategory('search');
 		if(isset($_POST["SubCategory"])) {
 			$new_model->attributes = $_POST["SubCategory"];
-			if($new_model->save())
+			if($new_model->save()) {
+				$new_model->updateTags();
 				$this->redirect(array('/admin/subCategory/index'));
+			}
 		}
 		$this->render('index',array(
 			'new_model'=>$new_model,

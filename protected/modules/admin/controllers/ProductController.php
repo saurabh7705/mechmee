@@ -10,8 +10,10 @@ class ProductController extends Controller
 		if(isset($_POST["Product"])) {
 			$new_model->attributes = $_POST["Product"];
 			$new_model->category_id = $new_model->sub_category->category_id;
-			if($new_model->save())
+			if($new_model->save()) {
+				$new_model->updateTags();
 				$this->redirect(array('/admin/product/index'));
+			}
 		}
 		$grid_model->in_stock = '';
 		$this->render('index',array(

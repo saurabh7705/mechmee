@@ -52,17 +52,28 @@ class ApiToken extends CActiveRecord
     }
 	
 	public static function createTokenForUserAndDevice($user, $device_id, $device_type) {
-		$token = sha1($user->email.time().$device_id);
+        if($user)
+            $token = sha1($user->email.time().$device_id);
+        else
+            $token = sha1(time().$device_id);
+
 		ApiToken::expireTokensForDeviceId($device_id, $device_type);
+
 		$api_token = new ApiToken;
-		$api_token->user_id = $user->id;
+        if($user)
+		  $api_token->user_id = $user->id;
 		$api_token->device_id = $device_id;
 		$api_token->status=self::STATUS_ACTIVE;
 		$api_token->token = $token;
 		$api_token->device_type = $device_type;
 		$api_token->save();
+
 		return $token;
 	}
+
+    public static function createTokenForDevice($device_id, $device_type) {
+        return self::createTokenForUserAndDevice(NULL, $device_id, $device_type);
+    }
 	
 	public static function expireTokensForDeviceId($device_id, $device_type) {
 		ApiToken::model()->updateAll(array('status'=>self::STATUS_INACTIVE), "device_id=:device_id and device_type=:device_type", array("device_id"=> $device_id, "device_type" => $device_type));

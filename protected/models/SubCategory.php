@@ -57,6 +57,7 @@ class SubCategory extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
+			'products' => array(self::HAS_MANY, 'Product', 'sub_category_id'),
 		);
 	}
 
@@ -87,6 +88,11 @@ class SubCategory extends CActiveRecord
 		$model->attributes = $attributes;
 		$model->save();
 		return $model;
+	}
+
+	public function updateTags() {
+		foreach($this->products as $product)
+			$product->updateTags();
 	}
 
 	/**
