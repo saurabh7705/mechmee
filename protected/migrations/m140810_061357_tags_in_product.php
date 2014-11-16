@@ -5,7 +5,7 @@ class m140810_061357_tags_in_product extends CDbMigration
 	public function up()
 	{
 		$this->addColumn('product', 'tags', 'text');
-		Yii::app()->db->createCommand("ALTER TABLE  `category` ADD FULLTEXT (`tags`)")->execute();
+		Yii::app()->db->createCommand("ALTER TABLE  `product` ADD FULLTEXT (`tags`)")->execute();
 	}
 
 	public function down()
