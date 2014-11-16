@@ -90,8 +90,8 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'saurabh7705@gmail.com',
-		'facebook_appID' => 'appID',
-        'facebook_appSecret' => 'appSecret',
+		'facebook_appID' => '271471459722891',
+        'facebook_appSecret' => 'ef0632aa37c9a07252923b09cf98a3ef',
 	),
 	'id' => '97280bb9a5ef52f6564ff41327d34ad0',
 );
