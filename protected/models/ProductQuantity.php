@@ -46,7 +46,7 @@ class ProductQuantity extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('product_id, quantity, price', 'required'),
-			array('product_id, stock_left, status, created_at, updated_at', 'numerical', 'integerOnly'=>true),
+			array('product_id, stock_left, status, created_at, updated_at, vendor_id', 'numerical', 'integerOnly'=>true),
 			array('quantity, price, vendor', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -63,6 +63,7 @@ class ProductQuantity extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'product' => array(self::BELONGS_TO, 'Product', 'product_id'),
+			'vendor' => array(self::HAS_ONE, 'Vendor', 'vendor_id'),
 		);
 	}
 

@@ -21,8 +21,9 @@
 				</div>
 
 				<div class="form-group">
+					<?php $vendors = Vendor::model()->findAll(); ?>
 					<label>Vendor</label>
-					<?php echo CHtml::textField("ProductQuantities[$product_quantity->id][vendor]", $product_quantity->vendor, array('class'=>'form-control')); ?>
+					<?php echo CHtml::dropDownList("ProductQuantities[$product_quantity->id][vendor_id]", $product_quantity->vendor_id, CHtml::listData($vendors, 'id', 'name'), array('class'=>'form-control')); ?>
 				</div>
 				
 				<div class="form-group">
@@ -32,6 +33,10 @@
 				<hr />
 			</div>
 		<?php } ?>
+		<br clear="all" />
+		<div class="buttons">
+			<input type="submit" name="submit" value="Submit" class="btn btn-success" />
+		</div>
 		<?php echo CHtml::endForm(); ?>
 	</div>
 	<br clear="all" />

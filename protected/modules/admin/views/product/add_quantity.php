@@ -25,8 +25,9 @@
 			</div>
 
 			<div class="form-group">
-				<?php echo $form->labelEx($new_model,'vendor'); ?>
-				<?php echo $form->textField($new_model,'vendor', array('class'=>'form-control')); ?>
+				<?php $vendors = Vendor::model()->findAll(); ?>
+				<?php echo $form->labelEx($new_model,'vendor_id'); ?>
+				<?php echo $form->dropDownList($new_model,'vendor_id', CHtml::listData($vendors, 'id', 'name'), array('class'=>'form-control')); ?>
 			</div>
 			
 			<div class="form-group">

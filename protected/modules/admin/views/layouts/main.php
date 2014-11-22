@@ -47,6 +47,7 @@
 					<li><?php echo  CHtml::link('Products',array('/admin/product/index')); ?></li>
 					<li><?php echo  CHtml::link('Sub Categories',array('/admin/subCategory/index')); ?></li>
 					<li><?php echo  CHtml::link('Categories',array('/admin/category/index')); ?></li>
+					<li><?php echo  CHtml::link('Vendor',array('/admin/vendor/index')); ?></li>
 	          	</ul>
 	        </li>
 	        <?php } ?>
