@@ -10,7 +10,15 @@ class ProductController extends Controller
 		if(isset($_POST["Product"])) {
 			$new_model->attributes = $_POST["Product"];
 			$new_model->category_id = $new_model->sub_category->category_id;
+			$new_model->file_name = CUploadedFile::getInstance($new_model, 'file_name');
 			if($new_model->save()) {
+				if($new_model->file_name) {
+					$extension = $new_model->file_name->getExtensionName();            
+					$new_model->extension = $extension;
+					$path = Yii::app()->basePath."/../product/$new_model->id.$extension";
+					$new_model->file_name->saveAs($path);
+					$new_model->save();
+				}
 				$new_model->updateTags();
 				$this->redirect(array('/admin/product/index'));
 			}

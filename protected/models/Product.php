@@ -48,6 +48,8 @@ class Product extends CActiveRecord
 			array('category_id, sub_category_id, in_stock, status, created_at, updated_at', 'numerical', 'integerOnly'=>true),
 			array('name, brand', 'length', 'max'=>255),
 			array('tags', 'safe'),
+			array('file_name', 'file', 'types'=>'jpg, jpeg, png', 'maxSize'=>1024*1024*3, 'tooLarge'=>'File size cannot exceed 3 MB.'),
+			array('extension', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, category_id, sub_category_id, brand, in_stock, status, tags, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -131,6 +133,18 @@ class Product extends CActiveRecord
 		$this->tags = $this->name.' '.$this->sub_category->name.' '.$this->category->name;
 		$this->save();
 	}
+
+	public function getFileName() {
+    	return "$this->id.$this->extension";
+    }
+
+    public function getFilePath() {
+    	return Yii::app()->basePath."/../product/$this->id.$this->extension";
+    }
+
+    public function getFileUrl() {
+		return "http://localhost/".Yii::app()->baseUrl."/product/".$this->getFileName();
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
