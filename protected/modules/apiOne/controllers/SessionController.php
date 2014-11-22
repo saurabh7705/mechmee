@@ -50,10 +50,10 @@ class SessionController extends CController {
 			$response = $this->handleExistingFacebook($facebook_data['user_profile'], $facebook_data['facebook_object']);
 			if($response) { //existing user found
 				echo CJSON::encode($response);
-			} else if(isset($_POST['User'])) { //existing user not found but consider signup
+			} else { //existing user not found but consider signup
 				$user = new User;
 				$user->scenario = 'facebook';
-				$user->attributes = $_POST['User'];
+				//$user->attributes = $_POST['User'];
 				$user->password = "";
 				if($user->updateProfileFromFacebookAndSave($facebook_data['user_profile'])) {
 					$user->saveFacebookAuthentication($facebook_data['user_profile']);
@@ -62,9 +62,6 @@ class SessionController extends CController {
 				else {
 					echo CJSON::encode(array('status'=>'ERROR', 'errors'=>LoadDataHelper::getModelErrorsArray($user)));
 				}
-			}
-			else {  //existing user not found and dont consider signup
-				echo CJSON::encode(array("status"=>"SIGNUP_REQUIRED"));
 			}
 		}
 		else {
