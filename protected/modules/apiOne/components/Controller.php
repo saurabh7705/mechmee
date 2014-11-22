@@ -15,7 +15,7 @@ class Controller extends CController {
 	
 	public function filterAuthenticate($filterChain) {
 		if(isset($_GET['auth_token'])) {
-			if($_GET['auth_token'] == "####") {
+			if($_GET['auth_token'] == "1234") {
 				$this->setUser(1);
 			}
 			else {

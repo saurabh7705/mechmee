@@ -25,5 +25,13 @@ class SiteController extends CController {
 		$response = array('status'=>'SUCCESS', "auth_token"=>$token);
 		echo CJSON::encode($response);
 	}
+
+	public function actionError()
+	{
+		if($error=Yii::app()->errorHandler->error)
+		{
+			echo CJSON::encode(array('code'=>$code, 'message'=>$message));
+		}
+	}
 }
 ?>

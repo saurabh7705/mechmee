@@ -37,7 +37,7 @@ class ProductController extends Controller {
 	public function actionApplyFilters() {
 		$criteria = $this->getSearchCriteria($_GET['search']);
 		$products = Product::model()->findAll($criteria);
-		$this->renderData(array('status'=>'SUCCESS', 'products'=>LoadDataHelper::getProducts($products));
+		$this->renderData(array('status'=>'SUCCESS', 'products'=>LoadDataHelper::getProducts($products)));
 	}
 
 	public function getSearchCriteria($params) {
@@ -46,9 +46,9 @@ class ProductController extends Controller {
 		$criteria->scopes = array('viewable');
 		$criteria->addCondition("MATCH(tags) AGAINST ($tags)");
 		if(isset($params['category_ids']))
-			$criteria->addInCondition('category_id', explode(',' $params['category_ids']));
+			$criteria->addInCondition('category_id', explode(',', $params['category_ids']));
 		if(isset($params['sub_category_ids']))
-			$criteria->addInCondition('sub_category_id', explode(',' $params['sub_category_ids']));
+			$criteria->addInCondition('sub_category_id', explode(',', $params['sub_category_ids']));
 		if(isset($params['hot']) && $params['hot'] != '') {
 			$criteria->with[] = 'sub_category';
 			$criteria->addCondition("sub_category.is_hot = ".$params['hot']);

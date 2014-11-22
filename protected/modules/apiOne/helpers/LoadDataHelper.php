@@ -28,7 +28,7 @@ class LoadDataHelper {
 		return array(
 			'id'=>(int)$product->id, 'name'=>$product->name, 'brand'=>$product->brand,
 			'category'=>$category_data,
-			'sub_category'=>self::getCategory($product->sub_category, $category_data),
+			'sub_category'=>self::getSubCategory($product->sub_category, $category_data),
 			'quantities'=>$quantities_data
 		);
 	}
@@ -47,12 +47,12 @@ class LoadDataHelper {
 	public static function getSubCategories($sub_categories, $category_data=NULL) {
 		$data = array();
 		foreach($sub_categories as $sub_category)
-			$data[] = self::getProduct($sub_category, $category_data);
+			$data[] = self::getSubCategory($sub_category, $category_data);
 		return $data;
 	}
 
-	public static function getSubCategory($category, $category_data=NULL) {
-		$data = array('id'=>(int)$product->sub_category_id, 'name'=>$product->sub_category->name, 'is_hot'=>$product->sub_category->is_hot ? true : false);
+	public static function getSubCategory($sub_category, $category_data=NULL) {
+		$data = array('id'=>(int)$sub_category->id, 'name'=>$sub_category->name, 'is_hot'=>$sub_category->is_hot ? true : false);
 		if($category_data)
 			$data['category'] = $category_data;
 		else

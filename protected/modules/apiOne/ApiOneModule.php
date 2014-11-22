@@ -9,7 +9,7 @@ class ApiOneModule extends CWebModule
 		));
 		Yii::app()->setComponents(array(
 			'errorHandler'=>array(
-				'errorAction'=>'apiTwo/site/error',
+				'errorAction'=>'apiOne/site/error',
 			),
 		));
 	}
