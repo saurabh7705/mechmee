@@ -29,6 +29,7 @@ class LoadDataHelper {
 			'id'=>(int)$product->id, 'name'=>$product->name, 'brand'=>$product->brand,
 			'category'=>$category_data,
 			'sub_category'=>self::getSubCategory($product->sub_category, $category_data),
+			'image'=>$product->getFileUrl(),
 			'quantities'=>$quantities_data
 		);
 	}
@@ -41,7 +42,7 @@ class LoadDataHelper {
 	}
 
 	public static function getCategory($category) {
-		return array('id'=>(int)$category->id, 'name'=>$category->name, 'type'=>$category->type, 'type_name'=>Category::$types[$category->type]);
+		return array('id'=>(int)$category->id, 'name'=>$category->name, 'type'=>$category->type, 'type_name'=>Category::$types[$category->type], 'image'=>$category->getFileUrl());
 	}
 
 	public static function getSubCategories($sub_categories, $category_data=NULL) {

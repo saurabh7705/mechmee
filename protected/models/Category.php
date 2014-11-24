@@ -47,6 +47,8 @@ class Category extends CActiveRecord
 			array('name, type', 'required'),
 			array('created_at, updated_at', 'numerical', 'integerOnly'=>true),
 			array('name, type', 'length', 'max'=>255),
+			array('file_name', 'file', 'types'=>'jpg, jpeg, png', 'maxSize'=>1024*1024*3, 'tooLarge'=>'File size cannot exceed 3 MB.'),
+			array('extension', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, type, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -92,6 +94,18 @@ class Category extends CActiveRecord
 		$model->save();
 		return $model;
 	}
+
+	public function getFileName() {
+    	return "$this->id.$this->extension";
+    }
+
+    public function getFilePath() {
+    	return Yii::app()->basePath."/../category/$this->id.$this->extension";
+    }
+
+    public function getFileUrl() {
+		return "http://localhost/".Yii::app()->baseUrl."/category/".$this->getFileName();
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

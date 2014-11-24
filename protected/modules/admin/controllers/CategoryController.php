@@ -9,8 +9,17 @@ class CategoryController extends Controller
 		$grid_model = new Category('search');
 		if(isset($_POST["Category"])) {
 			$new_model->attributes = $_POST["Category"];
-			if($new_model->save())
+			$new_model->file_name = CUploadedFile::getInstance($new_model, 'file_name');
+			if($new_model->save()) {
+				if($new_model->file_name) {
+					$extension = $new_model->file_name->getExtensionName();            
+					$new_model->extension = $extension;
+					$path = Yii::app()->basePath."/../category/$new_model->id.$extension";
+					$new_model->file_name->saveAs($path);
+					$new_model->save();
+				}
 				$this->redirect(array('/admin/category/index'));
+			}
 		}
 		$this->render('index',array(
 			'new_model'=>$new_model,
