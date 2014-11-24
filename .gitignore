@@ -14,3 +14,4 @@ protected/runtime/state.bin
 protected/runtime/gii-1.1.15
 protected/runtime/gii-1.1.15/
 product/*.*
+category/*.*
