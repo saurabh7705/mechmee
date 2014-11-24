@@ -17,6 +17,22 @@ class ProductController extends Controller {
 		$this->renderData(array('status'=>'SUCCESS', 'products'=>LoadDataHelper::getProducts($products), 'category'=>$category_data, 'sub_category'=>$sub_category));
 	}
 
+	public function actionSnacks() {
+		$products = Product::model()->viewable()->with('category')->findAll('category.type = :snacks', array('snacks'=>Category::TYPE_SNACKS));
+		$category_ids = $sub_category_ids = $categories = $sub_categories = array();
+		foreach($products as $product) {
+			if(!in_array($product->category_id, $category_ids)) {
+				$categories[] = $product->category;
+				$category_ids[] = $product->category_id;
+			}
+			if(!in_array($product->sub_category_id, $sub_category_ids)) {
+				$sub_categories[] = $product->sub_category;
+				$sub_category_ids[] = $product->sub_category_id;
+			}
+		}
+		$this->renderData(array('status'=>'SUCCESS', 'products'=>LoadDataHelper::getProducts($products), 'categories'=>LoadDataHelper::getCategories($categories), 'sub_categories'=>LoadDataHelper::getSubCategories($sub_categories)));
+	}
+
 	public function actionSearch($term) {
 		$criteria = $this->getSearchCriteria(array('term'=>$term));
 		$products = Product::model()->findAll($criteria);
@@ -31,7 +47,7 @@ class ProductController extends Controller {
 				$sub_category_ids[] = $product->sub_category_id;
 			}
 		}
-		$this->renderData(array('status'=>'SUCCESS', 'products'=>LoadDataHelper::getProducts($products), 'categories'=>LoadDataHelper::getCategories($categories), 'sub_category'=>LoadDataHelper::getSubCategories($sub_categories)));
+		$this->renderData(array('status'=>'SUCCESS', 'products'=>LoadDataHelper::getProducts($products), 'categories'=>LoadDataHelper::getCategories($categories), 'sub_categories'=>LoadDataHelper::getSubCategories($sub_categories)));
 	}
 
 	public function actionApplyFilters() {

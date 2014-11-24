@@ -47,8 +47,8 @@ class User extends CActiveRecord
 			array('username', 'filter', 'filter'=>array($this, 'removeInvalidChars')),
 			array('email','email'),
 			array('email', 'required'),
-			array('status, superuser, access_level, created_at, updated_at', 'numerical', 'integerOnly'=>true),
-			array('email, password, username', 'length', 'max'=>255),
+			array('status, superuser, access_level, created_at, updated_at, is_guest', 'numerical', 'integerOnly'=>true),
+			array('email, password, username, lat, long', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, email, password, username, status, superuser, access_level, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -123,6 +123,18 @@ class User extends CActiveRecord
         }
         $this->updated_at = time();
         return parent::beforeSave();
+    }
+
+    public static function createGuestUser() {
+    	$user = new User;
+		$user->scenario = 'guest';
+		$user->password = "";
+		$user->is_guest = 1;
+		$user->email = 'user@drinkking.temp';
+		$user->save();
+		$user->email = "user+$user->id@drinkking.temp";
+		$user->save();
+		return $user;
     }
 
 	/**

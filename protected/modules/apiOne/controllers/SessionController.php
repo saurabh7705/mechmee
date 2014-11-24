@@ -68,6 +68,50 @@ class SessionController extends CController {
 			echo CJSON::encode(array('status'=>'ERROR', 'message'=>"Insufficient Data!"));
 		}
 	}
+
+	public function actionLatLong() {
+		if(isset($_GET['lat']) && isset($_GET['long'])) {
+			$url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='.$_GET['lat'].','.$_GET['long'].'&rankby=distance';
+			$json = file_get_contents($url);
+			$data = json_decode($json);
+			if($data->status == "OK") {
+				$result = $data->results[0];
+				$full_address = $result->formatted_address;
+				$city = $state = $country = $locality = $pincode = '';
+				$address_components = $result->address_components;
+				foreach($address_components as $component) {
+					if($component->types[0]=="postal_code")
+						$pincode = $component->long_name;
+					if($component->types[0]=="country")
+						$country = $component->long_name;
+					if($component->types[0]=="administrative_area_level_1")
+						$state = $component->long_name;
+					if($component->types[0]=="locality")
+						$city = $component->long_name;
+					if($component->types[0]=="sublocality_level_1")
+						$locality = $component->long_name;
+				}
+				$response = array('status'=>'SUCCESS', "city"=>$city, 'locality'=>$locality, 'address'=>$full_address);
+			}
+			else {
+				$response = array('status'=>'ERROR', 'message'=>'No data provided by google');
+			}
+		}
+		else {
+			$response = array('status'=>'ERROR', 'message'=>'Please provide lat long.');
+		}
+		
+		echo CJSON::encode($response);
+	}
+
+	public function actionGuestLogin() {
+		if(isset($_POST['guest_request']) && $_POST['guest_request'] == 'drink') {
+			$user = User::createGuestUser();
+			$token = ApiToken::createTokenForUserAndDevice($user, $this->_device_id, $this->_device_type);
+			$categories = Category::model()->findAll();
+			echo CJSON::encode(array('status'=>'SUCCESS', 'categories'=>LoadDataHelper::getCategories($categories), 'auth_token'=>$token));
+		}
+	}
 	
 	public function handleExistingFacebook($user_profile, $facebook_object) {
 		$response = NULL;

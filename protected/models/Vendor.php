@@ -39,7 +39,7 @@ class Vendor extends CActiveRecord
 		return array(
 			array('name', 'required'),
 			array('address_id, does_deliver, status, created_at, updated_at', 'numerical', 'integerOnly'=>true),
-			array('name, email, phone', 'length', 'max'=>255),
+			array('name, email, phone, lat, long', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, address_id, does_deliver, status, email, phone, created_at, updated_at', 'safe', 'on'=>'search'),
