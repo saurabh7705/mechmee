@@ -105,7 +105,7 @@ class SessionController extends CController {
 	}
 
 	public function actionGuestLogin() {
-		if(isset($_POST['guest_request']) && $_POST['guest_request'] == 'drink') {
+		if(isset($_GET['guest_request']) && $_GET['guest_request'] == 'drink') {
 			$user = User::createGuestUser();
 			$token = ApiToken::createTokenForUserAndDevice($user, $this->_device_id, $this->_device_type);
 			$categories = Category::model()->findAll();

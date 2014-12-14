@@ -60,7 +60,8 @@ class ProductController extends Controller {
 		$tags = SharedFunctions::lib()->getSearchTagsString($params['term']);
 		$criteria = new CDbCriteria;
 		$criteria->scopes = array('viewable');
-		$criteria->addCondition("MATCH(tags) AGAINST ($tags)");
+		foreach($tags as $tag)
+			$criteria->addCondition("tags LIKE '%$tag%'");
 		if(isset($params['category_ids']))
 			$criteria->addInCondition('category_id', explode(',', $params['category_ids']));
 		if(isset($params['sub_category_ids']))

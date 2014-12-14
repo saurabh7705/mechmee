@@ -12,11 +12,12 @@ Class SharedFunctions{
 
     public function getSearchTagsString($term) {
     	$tags = explode(' ', $term);
-    	if(count($tags) == 1)
-    		return "'".$tags[0]."'";
+    	//if(count($tags) == 1)
+    	//	return "'".$tags[0]."'";
 
-    	$tags_string = "'".implode("' , '", $tags)."'";
-    	return $tags_string;
+    	//$tags_string = "'".implode("' , '", $tags)."'";
+    	//return $tags_string;
+        return $tags;
     }
 }
 ?>
