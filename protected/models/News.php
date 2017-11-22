@@ -1,23 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "category".
+ * This is the model class for table "news".
  *
- * The followings are the available columns in table 'category':
+ * The followings are the available columns in table 'news':
  * @property string $id
- * @property string $name
- * @property integer $status
+ * @property string $title
+ * @property string $description
+ * @property string $file_name
+ * @property string $extension
  * @property integer $created_at
  * @property integer $updated_at
  */
-class Category extends CActiveRecord
+class News extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'category';
+		return 'news';
 	}
 
 	/**
@@ -28,12 +30,14 @@ class Category extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
-			array('status, created_at, updated_at', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
+			array('created_at, updated_at', 'numerical', 'integerOnly'=>true),
+			array('file_name, extension', 'length', 'max'=>255),
+			array('title, description', 'safe'),
+			array('file_name', 'file', 'types'=>'jpg, jpeg, png', 'maxSize'=>1024*1024*3, 'tooLarge'=>'File size cannot exceed 3 MB.'),
+			array('extension', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, title, description, file_name, extension, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,6 +52,18 @@ class Category extends CActiveRecord
 		);
 	}
 
+	public function getFileName() {
+    	return "$this->id.$this->extension";
+    }
+
+    public function getFilePath() {
+    	return Yii::app()->basePath."/../news/$this->id.$this->extension";
+    }
+
+    public function getFileUrl() {
+		return "http://localhost/".Yii::app()->baseUrl."/news/".$this->getFileName();
+    }
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -55,8 +71,10 @@ class Category extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'status' => 'Status',
+			'title' => 'Title',
+			'description' => 'Description',
+			'file_name' => 'File Name',
+			'extension' => 'Extension',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
@@ -88,8 +106,10 @@ class Category extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('status',$this->status);
+		$criteria->compare('title',$this->title,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('file_name',$this->file_name,true);
+		$criteria->compare('extension',$this->extension,true);
 		$criteria->compare('created_at',$this->created_at);
 		$criteria->compare('updated_at',$this->updated_at);
 
@@ -102,7 +122,7 @@ class Category extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Category the static model class
+	 * @return News the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

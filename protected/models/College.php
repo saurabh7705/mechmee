@@ -1,23 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "category".
+ * This is the model class for table "college".
  *
- * The followings are the available columns in table 'category':
+ * The followings are the available columns in table 'college':
  * @property string $id
  * @property string $name
- * @property integer $status
+ * @property string $description
+ * @property integer $city_id
+ * @property integer $sub_course_id
+ * @property integer $established_year
+ * @property string $location
+ * @property integer $rating
+ * @property string $file_name
+ * @property string $extension
  * @property integer $created_at
  * @property integer $updated_at
  */
-class Category extends CActiveRecord
+class College extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'category';
+		return 'college';
 	}
 
 	/**
@@ -28,12 +35,15 @@ class Category extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
-			array('status, created_at, updated_at', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
+			array('city_id, sub_course_id', 'required'),
+			array('city_id, sub_course_id, established_year, rating, created_at, updated_at', 'numerical', 'integerOnly'=>true),
+			array('location, file_name, extension', 'length', 'max'=>255),
+			array('name, description', 'safe'),
+			array('file_name', 'file', 'types'=>'jpg, jpeg, png', 'maxSize'=>1024*1024*3, 'tooLarge'=>'File size cannot exceed 3 MB.'),
+			array('extension', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, name, description, city_id, sub_course_id, established_year, location, rating, file_name, extension, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,8 +55,22 @@ class Category extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'city' => array(self::BELONGS_TO, 'City', 'city_id'),
+			'subCourse' => array(self::BELONGS_TO, 'SubCourse', 'sub_course_id'),
 		);
 	}
+
+	public function getFileName() {
+    	return "$this->id.$this->extension";
+    }
+
+    public function getFilePath() {
+    	return Yii::app()->basePath."/../college/$this->id.$this->extension";
+    }
+
+    public function getFileUrl() {
+		return "http://localhost/".Yii::app()->baseUrl."/college/".$this->getFileName();
+    }
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -56,7 +80,14 @@ class Category extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
-			'status' => 'Status',
+			'description' => 'Description',
+			'city_id' => 'City',
+			'sub_course_id' => 'Sub Course',
+			'established_year' => 'Established Year',
+			'location' => 'Location',
+			'rating' => 'Rating',
+			'file_name' => 'File Name',
+			'extension' => 'Extension',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
@@ -89,7 +120,14 @@ class Category extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('status',$this->status);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('city_id',$this->city_id);
+		$criteria->compare('sub_course_id',$this->sub_course_id);
+		$criteria->compare('established_year',$this->established_year);
+		$criteria->compare('location',$this->location,true);
+		$criteria->compare('rating',$this->rating);
+		$criteria->compare('file_name',$this->file_name,true);
+		$criteria->compare('extension',$this->extension,true);
 		$criteria->compare('created_at',$this->created_at);
 		$criteria->compare('updated_at',$this->updated_at);
 
@@ -102,7 +140,7 @@ class Category extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Category the static model class
+	 * @return College the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

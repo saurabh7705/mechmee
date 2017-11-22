@@ -10,8 +10,8 @@
     <!--<link rel="shortcut icon" href="favicon.png">-->
     <meta property="og:title" content="<?php echo CHtml::encode($this->pageTitle); ?>" />
     <title data-title="<?php echo CHtml::encode($this->pageTitle); ?>"><?php echo CHtml::encode($this->pageTitle); ?></title>
- 	<meta name="description" content="Drink King">
-	<meta name="author" content="Drink King Pvt Ltd.">
+ 	<meta name="description" content="MechMee">
+	<meta name="author" content="MechMee Pvt Ltd.">
 	<?php $baseurl=Yii::app()->baseUrl; ?>
 	<?php $this->renderPartial("application.views.shared.stylesheets"); ?>
 	
@@ -29,7 +29,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#">Drinkking Club</a>
+	      <a class="navbar-brand" href="#">MechMee</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,10 +44,7 @@
 	        <li class="dropdown">
 	          	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Actions <span class="caret"></span></a>
 	          	<ul class="dropdown-menu" role="menu">
-					<li><?php echo  CHtml::link('Products',array('/admin/product/index')); ?></li>
-					<li><?php echo  CHtml::link('Sub Categories',array('/admin/subCategory/index')); ?></li>
 					<li><?php echo  CHtml::link('Categories',array('/admin/category/index')); ?></li>
-					<li><?php echo  CHtml::link('Vendor',array('/admin/vendor/index')); ?></li>
 	          	</ul>
 	        </li>
 	        <?php } ?>
@@ -70,7 +67,7 @@
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-7 tar">
-					    <p>&#169; <?php echo date("Y"); ?>, DrinkKing.club&nbsp;&nbsp;&nbsp;&nbsp;</p>
+					    <p>&#169; <?php echo date("Y"); ?>, MechMee&nbsp;&nbsp;&nbsp;&nbsp;</p>
 					</div>
 				</div>
 			</footer>

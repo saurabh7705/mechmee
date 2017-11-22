@@ -29,9 +29,12 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
+				array('label'=>'Categories', 'url'=>array('/admin/category/index')),
+				array('label'=>'Courses', 'url'=>array('/admin/course/index')),
+				array('label'=>'Sub Courses', 'url'=>array('/admin/subCourse/index')),
+				array('label'=>'College', 'url'=>array('/admin/college/index')),
+				array('label'=>'News', 'url'=>array('/admin/news/index')),
+				array('label'=>'City', 'url'=>array('/admin/city/index')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
@@ -48,9 +51,8 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		Copyright &copy; <?php echo date('Y'); ?> by MechMee.<br/>
+		All Rights Reserved.
 	</div><!-- footer -->
 
 </div><!-- page -->

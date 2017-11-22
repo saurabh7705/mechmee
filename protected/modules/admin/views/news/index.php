@@ -1,18 +1,18 @@
 <?php
-/* @var $this CategoryController */
+/* @var $this NewsController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Categories',
+	'News',
 );
 
 $this->menu=array(
-	array('label'=>'Create Category', 'url'=>array('create')),
-	array('label'=>'Manage Category', 'url'=>array('admin')),
+	array('label'=>'Create News', 'url'=>array('create')),
+	array('label'=>'Manage News', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Categories</h1>
+<h1>News</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

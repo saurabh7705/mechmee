@@ -1,15 +1,15 @@
 <?php
-/* @var $this CategoryController */
-/* @var $model Category */
+/* @var $this CollegeController */
+/* @var $model College */
 
 $this->breadcrumbs=array(
-	'Categories'=>array('index'),
+	'Colleges'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Create Category', 'url'=>array('create')),
+	array('label'=>'List College', 'url'=>array('index')),
+	array('label'=>'Create College', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#category-grid').yiiGridView('update', {
+	$('#college-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Categories</h1>
+<h1>Manage Colleges</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -39,15 +39,31 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
-
+<?php 
+$sub_courses = SubCourse::model()->findAll();
+$cities = City::model()->findAll();
+?>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'category-grid',
+	'id'=>'college-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
 		'name',
-		'status',
+		'description',
+		array(
+			'name' => 'city_id',
+			'value' => '$data->city->name',
+			'filter' => CHtml::dropDownList('College[city_id]', $model->city_id, CHtml::listData($cities,'id','name'), array('prompt' => 'All')),
+		),
+		array(
+			'name' => 'sub_course_id',
+			'value' => '$data->sub_course->name',
+			'filter' => CHtml::dropDownList('College[sub_course_id]', $model->sub_course_id, CHtml::listData($sub_courses,'id','name'), array('prompt' => 'All')),
+		),
+		'established_year',
+		'location',
+		'rating',
 		array(
             'name'=>'created_at',
             'value'=>'(!$data->created_at)?$data->created_at:SharedFunctions::lib()->showTime("$data->created_at")',
