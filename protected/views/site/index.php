@@ -43,7 +43,7 @@ $this->pageTitle=Yii::app()->name;
 				<?php foreach($categories as $key=>$category) { ?>
 						<?php $course = Course::model()->find(array("condition"=>"category_id = :category_id", "params"=>array("category_id"=>$category->id))); ?>
 						<div class="col-md-4">
-							<div class="">
+							<div class="wow fadeInUp">
 								<img src="<?php echo Yii::app()->baseUrl;?>/images/mbbsadmission1.jpg" alt="" width="220" height="110">
 								<h4 style="font-size: 16px;"><?php echo CHtml::link($course->name." Admission", array("/college/search", "course_id"=>$course->id), array("class"=>"text-primary")); ?></h4>
 								<p><?php echo $course->description; ?></p>
@@ -55,7 +55,7 @@ $this->pageTitle=Yii::app()->name;
 
 			<div style="border-top: 1px solid #eeeeee;height:1px;margin:40px 0px;"></div>
 
-			<div style="text-align:center;">
+			<div style="text-align:center;" class="wow fadeInUp">
 				<h3>Know us ...</h3>
 			    <p>Dewmate is one of the best educational portal in India with information on over 30,000 institutes ,&nbsp;5000 courses, 300 exams and a database of 10,00,000 queries , Dewmate is well&shy; recognized&nbsp;among the education aspirant community who use the portal for information, preparatory material&nbsp;and guidance for studying in India and abroad.
 			    </p>
@@ -63,7 +63,7 @@ $this->pageTitle=Yii::app()->name;
 
 			<div class="row-fluid clearfix" style="padding-top: 40px;">
 				<div class="col-md-8 col-md-offset-2">
-					<div class="panel panel-primary">
+					<div class="panel panel-primary wow fadeInUp">
 					  <div class="panel-heading">
 					    <h3 class="panel-title" style="text-align:center;">News</h3>
 					  </div>

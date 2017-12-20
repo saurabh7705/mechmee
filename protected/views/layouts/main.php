@@ -58,7 +58,7 @@
 				<?php } ?>
 	            <?php echo $content; ?>
 
-	            <div class="row-fluid clearfix" style="background: #c5c7cc;" id="contact">
+	            <div class="row-fluid clearfix wow fadeIn" style="background: #c5c7cc;" id="contact">
 					<div class="col-md-8 col-md-offset-2">
 						<div style="padding: 10px 0px 20px;">
 							<?php $new_model = new Contact; ?>
@@ -136,7 +136,7 @@
 				</div>
 			</footer>
 
-			<div class="floatingForm">
+			<div class="floatingForm wow bounceInUp">
 				<div class="" id="contact-form">
 					<div>
 						<?php $new_model1 = new Contact; ?>
@@ -175,5 +175,8 @@
 		</div><!--end #main -->
 	</div>
 </div>
+<script>
+	new WOW().init();
+</script>
 </body>
 </html>

@@ -9,6 +9,7 @@ Yii::app()->clientScript->addPackage('other-required-scripts', array(
     'js'=>array(
     	"js/modernizr-2.5.3-respond-1.1.0.min.js",
     	"js/bootstrap-3.0.2.min.js",
+    	"js/wow.min.js",
     ),
     'depends'=>array('jquery')
 ));

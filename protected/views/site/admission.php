@@ -11,7 +11,7 @@ $this->pageTitle="Test Preparation | Admission | ".Yii::app()->name;
 		<?php foreach($categories as $key=>$category) { ?>
 				<?php $course = Course::model()->find(array("condition"=>"category_id = :category_id", "params"=>array("category_id"=>$category->id))); ?>
 				<div class="col-md-4">
-					<div class="">
+					<div class="wow pulse">
 						<img src="<?php echo Yii::app()->baseUrl;?>/images/mbbsadmission1.jpg" alt="" style="width: 100%;">
 						<h4 style="font-size: 16px;margin: 20px 0px;">
 							<?php echo CHtml::link($course->name." Admission", array("/college/search", "course_id"=>$course->id)); ?>

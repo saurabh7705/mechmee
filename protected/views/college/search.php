@@ -3,7 +3,7 @@
 	<h3>Showing <?php echo count($colleges); ?> results</h3>
 	<div class="m20">
 		<?php foreach ($colleges as $key => $college) { ?>
-		<div class="collegeBlock" style="box-shadow: 0 0 2px 1px #efefef;margin: 10px 0px;padding: 20px;">
+		<div class="collegeBlock wow fadeInUp" style="box-shadow: 0 0 2px 1px #efefef;margin: 10px 0px;padding: 20px;">
 			<div class="row-fluid clearfix">
 				<div class="col-md-8">
 					<h4 class="text-info"><?php echo CHtml::link($college->name, array("/college/show", "id"=>$college->id)); ?></h4>

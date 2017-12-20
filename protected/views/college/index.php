@@ -6,7 +6,7 @@
 		<?php $news_items = News::model()->findAll(array("limit"=>3, "order"=>"created_at DESC")); ?>
 	    <?php foreach ($news_items as $key => $news) { ?>
 	    	<div class="col-md-4">
-		    	<div class="newsBlock" style="box-shadow: 0 0 2px 1px #efefef;">
+		    	<div class="newsBlock wow pulse" style="box-shadow: 0 0 2px 1px #efefef;">
 		    		<img class="img-responsive" style="height: 200px;margin: 0 auto; width: 100%;" src="<?php echo $news->getFileUrl(); ?>" />
 		    		<div style="padding: 10px;">
 			    		<h4 style="color: #222;"><?php echo $news->title; ?></h4>
@@ -24,7 +24,7 @@
 		<?php $colleges = College::model()->findAll(array("limit"=>3, "order"=>"updated_at DESC")); ?>
 	    <?php foreach ($colleges as $key => $college) { ?>
 	    	<div class="col-md-4">
-		    	<div class="newsBlock" style="box-shadow: 0 0 2px 1px #efefef;">
+		    	<div class="newsBlock wow fadeInUp" style="box-shadow: 0 0 2px 1px #efefef;">
 		    		<img class="img-responsive" style="height: 200px;margin: 0 auto; width: 100%;" src="<?php echo $college->getFileUrl(); ?>" />
 		    		<div style="padding: 10px;">
 			    		<h4 style="color: #222;"><?php echo $college->name; ?></h4>
