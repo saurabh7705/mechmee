@@ -70,6 +70,7 @@ class College extends CActiveRecord
 
     public function getFileUrl() {
 		return "http://52.221.250.196/".Yii::app()->baseUrl."/college/".$this->getFileName();
+		//return "http://localhost/".Yii::app()->baseUrl."/college/".$this->getFileName();
     }
 
 	/**

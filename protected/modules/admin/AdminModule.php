@@ -1,10 +1,10 @@
 <?php
 class AdminModule extends CWebModule
 {
-	public $defaultController = 'product';
+	public $defaultController = 'category';
 	public function init() {
 		$this->layoutPath = Yii::getPathOfAlias('application.modules.admin.views.layouts');
-		$this->layout='main';
+		$this->layout='admin_main';
 	}
 
 	public function beforeControllerAction($controller, $action) {                                                                                                             

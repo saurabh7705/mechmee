@@ -30,7 +30,33 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		//$this->render('index');
-		$this->redirect(array('/admin/session/login'));
+		//$this->redirect(array('/admin/session/login'));
+		$this->render('index');
+	}
+
+	public function actionContact() {
+		$model=new College;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Contact']))
+		{
+			$model->attributes=$_POST['Contact'];
+			if($model->save()) {
+				Yii::app()->user->setFlash('success',  "Contact information submitted successfully");
+				$this->redirect(array("/"));
+			} else {
+				Yii::app()->user->setFlashFromModelErrors($model->errors);
+			}
+			
+		}
+
+		$this->render('index');
+	}
+
+	public function actionAdmission() {
+		$this->render('admission');	
 	}
 
 	/**

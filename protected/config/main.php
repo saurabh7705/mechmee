@@ -62,6 +62,7 @@ return array(
 			'connectionString' => 'mysql:host=127.0.0.1;dbname=course_application;',
 			'emulatePrepare' => true,  	
 			'username' => 'root',
+			//'password' => '',
 			'password' => 'mechmee',	  	
 			'charset' => 'utf8',  	
 			'tablePrefix' => '',

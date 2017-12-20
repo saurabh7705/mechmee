@@ -1,6 +1,6 @@
 <?php
 
-class CourseController extends Controller
+class ContactController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -62,25 +62,16 @@ class CourseController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Course;
+		$model=new Contact;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Course']))
+		if(isset($_POST['Contact']))
 		{
-			$model->attributes=$_POST['Course'];
-			$model->file_name = CUploadedFile::getInstance($model, 'file_name');
-			if($model->save()) {
-				if($model->file_name) {
-					$extension = $model->file_name->getExtensionName();            
-					$model->extension = $extension;
-					$path = Yii::app()->basePath."/../course/$model->id.$extension";
-					$model->file_name->saveAs($path);
-					$model->save();
-				}
+			$model->attributes=$_POST['Contact'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
-			}
 		}
 
 		$this->render('create',array(
@@ -100,20 +91,11 @@ class CourseController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Course']))
+		if(isset($_POST['Contact']))
 		{
-			$model->attributes=$_POST['Course'];
-			$model->file_name = CUploadedFile::getInstance($model, 'file_name');
-			if($model->save()) {
-				if($model->file_name) {
-					$extension = $model->file_name->getExtensionName();            
-					$model->extension = $extension;
-					$path = Yii::app()->basePath."/../course/$model->id.$extension";
-					$model->file_name->saveAs($path);
-					$model->save();
-				}
+			$model->attributes=$_POST['Contact'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
-			}
 		}
 
 		$this->render('update',array(
@@ -140,7 +122,7 @@ class CourseController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Course');
+		$dataProvider=new CActiveDataProvider('Contact');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -151,10 +133,10 @@ class CourseController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Course('search');
+		$model=new Contact('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Course']))
-			$model->attributes=$_GET['Course'];
+		if(isset($_GET['Contact']))
+			$model->attributes=$_GET['Contact'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -165,12 +147,12 @@ class CourseController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Course the loaded model
+	 * @return Contact the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Course::model()->findByPk($id);
+		$model=Contact::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -178,11 +160,11 @@ class CourseController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Course $model the model to be validated
+	 * @param Contact $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='course-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='contact-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

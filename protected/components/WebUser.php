@@ -20,5 +20,11 @@ class WebUser extends CWebUser{
 		}
 		return $this->_user;
 	}
+
+	function setFlashFromModelErrors($errors, $implode_by='<br />') {
+		foreach($errors as $error)
+			$message[] = $error[0];
+		$this->setFlash('danger', implode("<br />", $message));
+	}
 }
 ?>

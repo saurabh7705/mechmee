@@ -1,24 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "course".
+ * This is the model class for table "contact".
  *
- * The followings are the available columns in table 'course':
+ * The followings are the available columns in table 'contact':
  * @property string $id
  * @property string $name
- * @property integer $category_id
- * @property integer $status
+ * @property string $email
+ * @property string $mobile
+ * @property integer $course_id
+ * @property integer $city_id
  * @property integer $created_at
  * @property integer $updated_at
  */
-class Course extends CActiveRecord
+class Contact extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'course';
+		return 'contact';
 	}
 
 	/**
@@ -29,15 +31,12 @@ class Course extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, category_id', 'required'),
-			array('category_id, status, created_at, updated_at', 'numerical', 'integerOnly'=>true),
-			array('name, file_name, extension', 'length', 'max'=>255),
-			array('name, description', 'safe'),
-			array('file_name', 'file', 'types'=>'jpg, jpeg, png', 'maxSize'=>1024*1024*3, 'tooLarge'=>'File size cannot exceed 3 MB.'),
-			array('extension', 'safe'),
+			array('course_id, city_id, created_at, updated_at', 'numerical', 'integerOnly'=>true),
+			array('name, email, mobile', 'length', 'max'=>255),
+			array('name, email, mobile, course_id, city_id', 'required'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, category_id, status, created_at, updated_at, description', 'safe', 'on'=>'search'),
+			array('id, name, email, mobile, course_id, city_id, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,8 +48,8 @@ class Course extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
-			'sub_courses' => array(self::HAS_MANY, 'SubCourse', 'course_id'),
+			'city' => array(self::BELONGS_TO, 'City', 'city_id'),
+			'course' => array(self::BELONGS_TO, 'Course', 'course_id')
 		);
 	}
 
@@ -62,8 +61,10 @@ class Course extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
-			'category_id' => 'Category',
-			'status' => 'Status',
+			'email' => 'Email',
+			'mobile' => 'Mobile',
+			'course_id' => 'Course',
+			'city_id' => 'City',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
@@ -75,19 +76,6 @@ class Course extends CActiveRecord
 		$this->updated_at = time();
 		return parent::beforeSave();
 	}
-
-	public function getFileName() {
-    	return "$this->id.$this->extension";
-    }
-
-    public function getFilePath() {
-    	return Yii::app()->basePath."/../course/$this->id.$this->extension";
-    }
-
-    public function getFileUrl() {
-		return "http://52.221.250.196/".Yii::app()->baseUrl."/course/".$this->getFileName();
-		//return "http://localhost/".Yii::app()->baseUrl."/course/".$this->getFileName();
-    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -109,11 +97,10 @@ class Course extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('category_id',$this->category_id);
-		$criteria->compare('file_name',$this->file_name,true);
-		$criteria->compare('extension',$this->extension,true);
-		$criteria->compare('status',$this->status);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('mobile',$this->mobile,true);
+		$criteria->compare('course_id',$this->course_id);
+		$criteria->compare('city_id',$this->city_id);
 		$criteria->compare('created_at',$this->created_at);
 		$criteria->compare('updated_at',$this->updated_at);
 
@@ -126,7 +113,7 @@ class Course extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Course the static model class
+	 * @return Contact the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
