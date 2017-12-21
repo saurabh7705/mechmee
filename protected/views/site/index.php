@@ -42,14 +42,16 @@ $this->pageTitle=Yii::app()->name;
 				<?php $colors = array("success", "danger", "primary"); ?>
 				<?php foreach($categories as $key=>$category) { ?>
 						<?php $course = Course::model()->find(array("condition"=>"category_id = :category_id", "params"=>array("category_id"=>$category->id))); ?>
-						<div class="col-md-4">
-							<div class="wow fadeInUp">
-								<img src="<?php echo Yii::app()->baseUrl;?>/images/mbbsadmission1.jpg" alt="" width="220" height="110">
-								<h4 style="font-size: 16px;"><?php echo CHtml::link($course->name." Admission", array("/college/search", "course_id"=>$course->id), array("class"=>"text-primary")); ?></h4>
-								<p><?php echo $course->description; ?></p>
-								<a class="btn btn-<?php echo $colors[$key]; ?>" href="#!"><?php echo $category->name; ?></a>
+						<?php if($course) { ?>
+							<div class="col-md-4">
+								<div class="wow fadeInUp">
+									<img src="<?php echo Yii::app()->baseUrl;?>/images/mbbsadmission1.jpg" alt="" width="220" height="110">
+									<h4 style="font-size: 16px;"><?php echo CHtml::link($course->name." Admission", array("/college/search", "course_id"=>$course->id), array("class"=>"text-primary")); ?></h4>
+									<p><?php echo $course->description; ?></p>
+									<a class="btn btn-<?php echo $colors[$key]; ?>" href="#!"><?php echo $category->name; ?></a>
+								</div>
 							</div>
-						</div>
+						<?php } ?>
 				<?php } ?>
 			</div>
 
