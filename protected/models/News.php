@@ -61,9 +61,8 @@ class News extends CActiveRecord
     }
 
     public function getFileUrl() {
-		//return "http://52.221.250.196/".Yii::app()->baseUrl."/news/".$this->getFileName();
-
-		return Yii::app()->baseUrl."/news/".$this->getFileName();
+		return "http://52.221.250.196/".Yii::app()->baseUrl."/news/".$this->getFileName();
+		//return Yii::app()->baseUrl."/news/".$this->getFileName();
     }
 
 	/**

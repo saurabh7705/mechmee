@@ -1,7 +1,7 @@
 <?php
 $this->pageTitle=$college->name." | Admission | ".Yii::app()->name;
 ?>
-<div style="background: #1a2b50;padding: 40px;">
+<div style="background: #1a2b507a;padding: 120px 20px 80px;">
 	<h1 style="color: #fff;" class="tac"><?php echo $college->name; ?></h1>
 </div>
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="background: #f3f3f3;">

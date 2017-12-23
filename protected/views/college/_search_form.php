@@ -2,8 +2,8 @@
 $this->pageTitle="Colleges | Admission | ".Yii::app()->name;
 ?>
 
-<div class="row-fluid clearfix" style="background: #1a2b50;">
-	<div class="col-md-8 col-md-offset-2" style="text-align: center;padding: 40px;">
+<div class="row-fluid clearfix" style="background: #1a2b507a;padding-top: 60px;">
+	<div class="col-md-8 col-md-offset-2" style="text-align: center;padding: 80px;">
 		<h3 style="color: #FFF;">Search Colleges/Courses</h3>
 		<Br />
 		<?php echo CHtml::beginForm(array('/college/search'), 'get', array('class'=>'form-inline')); ?>
@@ -20,7 +20,7 @@ $this->pageTitle="Colleges | Admission | ".Yii::app()->name;
 				<?php echo CHtml::dropDownList('city_id', $city_id, CHtml::listData($cities,'id','name'), array('class'=>'form-control', 'prompt'=>"Select City")); ?>
 			</div>
 			<div class="form-group mr10">
-				<input type="submit" name="search" value="Browse Colleges" class="btn btn-info" style="margin-bottom: 8px;" />
+				<input type="submit" name="search" value="Browse Colleges" class="btn btn-primary" style="margin-bottom: 8px;" />
 			</div>
 		<?php echo CHtml::endForm(); ?>
 	</div>
