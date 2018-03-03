@@ -226,3 +226,39 @@ ul.footer-socials {
     color: #1fa3bb;
   }
 }
+
+.typewriter {
+  position: absolute;
+  top: 45vh;
+  left: 17.5%;
+  p {
+    font-size: 40px;
+    font-weight: 500;
+    font-family: 'Montserrat', serif !important;
+  }
+}
+
+.typewriter p {
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  /*border-right: 0.5px solid #AAA;*/ /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(30, end);
+    /*blink-caret .5s step-end infinite;*/
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #AAA }
+}

@@ -22,6 +22,10 @@ $this->pageTitle=Yii::app()->name;
       <img src="<?php echo Yii::app()->baseUrl;?>/images/banner3.jpg" style="height: 100vh; width: 100%;" alt="...">
     </div>
   </div>
+
+  	<div class="typewriter">
+		<p>Find about 25,000 colleges & 5,000 exams.</p>
+	</div>
 </div>
 
 <div style="padding: 100px 25px;"  id="about">
@@ -58,7 +62,7 @@ $this->pageTitle=Yii::app()->name;
 					<div class="data_block">
 						<h4><?php echo $news->title; ?></h4>
 						<p class="data"><?php echo $news->description; ?></p>
-						<p class="tar" style="margin-bottom: 0px;"><span class="text-muted"><?php echo SharedFunctions::lib()->showTime($news->created_at); ?></span></p>
+						<!--<p class="tar" style="margin-bottom: 0px;"><span class="text-muted"><?php //echo SharedFunctions::lib()->showTime($news->created_at); ?></span></p>-->
 					</div>
 				</div>
 			</div>

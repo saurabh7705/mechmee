@@ -38,9 +38,9 @@ class CollegeController extends Controller
 
 	public function actionSearch()
 	{
-		$course_id = $_GET['course_id'];
-		$sub_course_id = $_GET['sub_course_id'];
-		$city_id = $_GET['city_id'];
+		$course_id = array_key_exists('course_id', $_GET) ? $_GET['course_id'] : null;
+		$sub_course_id = array_key_exists('sub_course_id', $_GET) ? $_GET['sub_course_id'] : null;
+		$city_id = array_key_exists('city_id', $_GET) ? $_GET['city_id'] : null;
 
 		$condition = array();
 		$params = array();
