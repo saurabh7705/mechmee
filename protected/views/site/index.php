@@ -154,9 +154,9 @@ $this->pageTitle=Yii::app()->name;
 			    	BTM Layout Stage 2, Bangalore, Karnataka - 560076
 			    </p>
 			    <p class="data wow slideInLeft">
-			    	Contact us - <a href="tel:8050624407">+91 8050624407</a>
+			    	Contact us: <a href="tel:8050624407">+91 8050624407</a>
 			    	<br />
-			    	Mail us at - <a href="mailto:mechmee2k18@gmail.com" target="_top">mechmee2k18@gmail.com</a>
+			    	Mail: <a href="mailto:mechmee2k18@gmail.com" target="_top">mechmee2k18@gmail.com</a>
 			    </p>
 			</div>
 		</div>
