@@ -155,6 +155,7 @@ $this->pageTitle=Yii::app()->name;
 			    </p>
 			    <p class="data wow slideInLeft">
 			    	Contact us - <a href="tel:8050624407">+91 8050624407</a>
+			    	<br />
 			    	Mail us at - <a href="mailto:mechmee2k18@gmail.com" target="_top">mechmee2k18@gmail.com</a>
 			    </p>
 			</div>
