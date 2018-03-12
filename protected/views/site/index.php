@@ -153,6 +153,10 @@ $this->pageTitle=Yii::app()->name;
 			    <p class="data wow slideInLeft">
 			    	BTM Layout Stage 2, Bangalore, Karnataka - 560076
 			    </p>
+			    <p class="data wow slideInLeft">
+			    	Contact us - <a href="tel:8050624407">+91 8050624407</a>
+			    	Mail us at - <a href="mailto:mechmee2k18@gmail.com" target="_top">mechmee2k18@gmail.com</a>
+			    </p>
 			</div>
 		</div>
 		<div class="col-md-6" style="padding:0px;">
