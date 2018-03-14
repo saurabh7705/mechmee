@@ -145,7 +145,7 @@ $this->pageTitle=Yii::app()->name;
 <div id="contact" style="background: #FFF;">
 	<div class="row-fluid clearfix" style="padding:0px;">
 		<div class="col-md-6" style="padding:0px;">
-			<div style="padding: 15% 30%;">
+			<div class="padder">
 				<h2 class="mainHeading">Contact</h2>
 			    <p class="data wow slideInLeft">
 			    	We are Mechmee Private Limited.
