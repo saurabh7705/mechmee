@@ -10,6 +10,7 @@
     <title data-title="<?php echo CHtml::encode($this->pageTitle); ?>"><?php echo CHtml::encode($this->pageTitle); ?></title>
  	<meta name="description" content="MechMee">
 	<meta name="author" content="MechMee Pvt Ltd.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php $baseurl=Yii::app()->baseUrl; ?>
 	<?php $this->renderPartial("application.views.shared.stylesheets"); ?>
 	<link href="https://fonts.googleapis.com/css?family=EB+Garamond:800" rel="stylesheet">
