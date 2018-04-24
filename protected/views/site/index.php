@@ -8,6 +8,7 @@ $this->pageTitle=Yii::app()->name;
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -21,10 +22,32 @@ $this->pageTitle=Yii::app()->name;
     <div class="item">
       <img src="<?php echo Yii::app()->baseUrl;?>/images/banner3.jpg" style="height: 100vh; width: 100%;" alt="...">
     </div>
+    <div class="item">
+      <img src="<?php echo Yii::app()->baseUrl;?>/images/banner4.jpg" style="height: 100vh; width: 100%;" alt="...">
+    </div>
   </div>
 
   	<div class="typewriter">
 		<p>Find about 25,000 colleges & 5,000 exams.</p>
+	</div>
+</div>
+
+
+<div style="padding: 100px 25px;"  id="intro">
+	<div class="row-fluid clearfix">
+		<div class="col-md-6 tac">
+			<img src="<?php echo Yii::app()->baseUrl;?>/images/about.png" style="width: 100%;" alt="..." class="wow slideInLeft">
+		</div>
+		<div class="col-md-6">
+			<br />
+			<br />
+			<br />
+			<br />
+			<h2 class="mainHeading">Introduction</h2>
+		    <p class="data wow slideInRight">
+		   		Education has one of its fundamental goals, to impart the culture with best resources from generation to generation. It escalates the best sense of realization of self-potential and latent talents of an individual. With this ideology, an education portal named MechMee came into light. MechMee- India’s one of the rising education portal was launched on 21 March, 2013. Since, its opening, the portal has been excelling in providing good knowledge regarding education.  It is praiseworthy to note that within a span of two years, it has built a strong consolidating platform  to abide by the knowledge for taking admissions in well deserved colleges. As a matter of fact there is no denial, to accept that it provides profound information on a very large scale.
+		    </p>
+		</div>
 	</div>
 </div>
 
@@ -40,7 +63,7 @@ $this->pageTitle=Yii::app()->name;
 			<br />
 			<h2 class="mainHeading">About Us</h2>
 		    <p class="data wow slideInRight">
-		    Mechmee is one of the best educational portal in India with information on over 30,000 institutes ,&nbsp;5000 courses, 300 exams and a database of 10,00,000 queries , Mechmee is well&shy; recognized&nbsp;among the education aspirant community who use the portal for information, preparatory material&nbsp;and guidance for studying in India and abroad.
+		    	Mechmee comes as a source of profound knowledge over large number of educational institutions. Even, we are grandiose in providing information about different courses. As a matter of fact, we work as a team to guide perfectly about to choose the desired institution. There are certain undertakings, that we provide. We highly recommend our candidates to seek information on our program of test preparation. It is quite remarkable to maintain a proper follow up, and we give the best resources making your desires quenchable. Talking about preparation, we prepare candidates on fields like medicines, engineering, business, art history and many more. We have been getting influential and praiseworthy remarks, for the type of knowledge we provide. As a source of scholarly information, we cater optimum knowledge on 40,000 institutes, and our motto is to channelize the candidates about taking admission into the best among many. We also meet the requirements by providing information on 6000 different courses and 500 exams. To make candidates more satiable, we render  1,60,00,000 queries, letting you feel even more relaxed with  answers to your large number of questions.
 		    </p>
 		</div>
 	</div>
