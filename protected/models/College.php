@@ -40,7 +40,7 @@ class College extends CActiveRecord
 			array('location, file_name, extension', 'length', 'max'=>255),
 			array('name, description', 'safe'),
 			array('file_name', 'file', 'types'=>'jpg, jpeg, png', 'maxSize'=>1024*1024*3, 'tooLarge'=>'File size cannot exceed 3 MB.'),
-			array('extension', 'safe'),
+			array('extension, file_name', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, description, city_id, sub_course_id, established_year, location, rating, file_name, extension, created_at, updated_at', 'safe', 'on'=>'search'),
