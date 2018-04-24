@@ -9,6 +9,7 @@ $this->pageTitle=Yii::app()->name;
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
     <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -24,6 +25,9 @@ $this->pageTitle=Yii::app()->name;
     </div>
     <div class="item">
       <img src="<?php echo Yii::app()->baseUrl;?>/images/banner4.jpg" style="height: 100vh; width: 100%;" alt="...">
+    </div>
+    <div class="item">
+      <img src="<?php echo Yii::app()->baseUrl;?>/images/banner5.jpg" style="height: 100vh; width: 100%;" alt="...">
     </div>
   </div>
 
