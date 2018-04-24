@@ -32,7 +32,7 @@ $this->pageTitle=Yii::app()->name;
   </div>
 
   	<div class="typewriter">
-		<p>Find about 25,000 colleges & 5,000 exams.</p>
+		<p>Find about 40,000 colleges & 500 exams.</p>
 	</div>
 </div>
 
