@@ -67,7 +67,7 @@
 	        <footer class="footer tac">
 	        	<p style="font-size: 16px;line-height: 50px;letter-spacing: 2px;">COPYRIGHTS &#169; <?php echo date("Y"); ?> MechMee</p>
 	        	<ul class="footer-socials clearfix">
-			        <li><a href="#" class="foo_social"><i class="fa fa-facebook"></i></a></li>
+			        <li><a href="https://www.facebook.com/Mechmee-409984732795605/" class="foo_social"><i class="fa fa-facebook"></i></a></li>
 			        <li><a href="#" class="foo_social"><i class="fa fa-twitter"></i></a></li>
 			        <li><a href="#" class="foo_social"><i class="fa fa-google-plus"></i></a></li>
 			        <li><a href="#" class="foo_social"><i class="fa fa-behance"></i></a></li>
