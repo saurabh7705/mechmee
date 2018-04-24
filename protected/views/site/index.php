@@ -58,8 +58,6 @@ $this->pageTitle=Yii::app()->name;
 		<div class="col-md-6">
 			<br />
 			<br />
-			<br />
-			<br />
 			<h2 class="mainHeading">About Us</h2>
 		    <p class="data wow slideInRight">
 		    	Mechmee comes as a source of profound knowledge over large number of educational institutions. Even, we are grandiose in providing information about different courses. As a matter of fact, we work as a team to guide perfectly about to choose the desired institution. There are certain undertakings, that we provide. We highly recommend our candidates to seek information on our program of test preparation. It is quite remarkable to maintain a proper follow up, and we give the best resources making your desires quenchable. Talking about preparation, we prepare candidates on fields like medicines, engineering, business, art history and many more. We have been getting influential and praiseworthy remarks, for the type of knowledge we provide. As a source of scholarly information, we cater optimum knowledge on 40,000 institutes, and our motto is to channelize the candidates about taking admission into the best among many. We also meet the requirements by providing information on 6000 different courses and 500 exams. To make candidates more satiable, we render  1,60,00,000 queries, letting you feel even more relaxed with  answers to your large number of questions.
