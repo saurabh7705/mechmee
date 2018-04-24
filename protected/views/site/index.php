@@ -35,12 +35,7 @@ $this->pageTitle=Yii::app()->name;
 
 <div style="padding: 100px 25px;"  id="intro">
 	<div class="row-fluid clearfix">
-		<div class="col-md-6 tac">
-			<img src="<?php echo Yii::app()->baseUrl;?>/images/about.png" style="width: 100%;" alt="..." class="wow slideInLeft">
-		</div>
-		<div class="col-md-6">
-			<br />
-			<br />
+		<div class="col-md-6 col-md-offset-3">
 			<br />
 			<br />
 			<h2 class="mainHeading">Introduction</h2>
